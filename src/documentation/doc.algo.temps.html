@@ -1,0 +1,17 @@
+<html><head><title>Documentation BePuyo : gestion du temps</title></head>
+<BODY bgcolor=336698 text=FFFFFF link=00FF00>
+<font size=-2>BePuyo 0.0.8 : <a href=doc.BePuyo.html>index</a></font>
+<center><b><u><font size=+3>Gestion du temps</font></u></b></center><p>
+<hr><font size=+4 color=FF0000><center>OBSOLETE</font></center><hr>
+La gestion du temps dans BePuyo est une probl&eacute;matique qui me donne bien des soucis.<br>
+L'&eacute;volution 'automatique' du PuyoField (pieces qui tombent toutes seules) est prise en charge par la m&eacute;thode <b>Pulse</b> de la classe <a href=doc.PuyoAnimApp.html>PuyoAnimApp</a>. Cette m&eacute;thode se d&eacute;clenche toutes les 50000 microsecondes (appel SetPulseRate dans main.cpp) et envoie le message MON_BOUTON_MSG a la PuyoAnimWin.<br>
+La PuyoAnimWin traite le message de la facon suivante : <ul>
+<li>incrementation d'un compteur
+<li>si le comteur est divisible par 8, on fait tomber la piece et on raffraichit l'affichage
+</ul>
+Je sais, je sais, pourquoi ne pas regler Pulse sur 400000microsecondes ? Et bien parce que ca a l'air d'etre bien moins jouable ?!!?<br>
+J'ai beaucoup de mal sur cet aspect de la programmation d'un jeu, et j'aimerais bien avoir de l'aide :(
+<p><table border=0 cellspacing=0 cellpadding=1><tr><td bgcolor=FFE664><table border=0 cellspacing=0 cellpadding=2><tr><td bgcolor=006996>
+<a href=doc.BePuyo.html>retour a l'index de la documentation</a>
+</td></tr></table></td></tr></table>
+</body></html>

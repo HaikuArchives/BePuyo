@@ -1,0 +1,18 @@
+<html><head><title>Documentation BePuyo : algorithme de detection des collisions</title></head>
+<BODY bgcolor=336698 text=FFFFFF link=00FF00>
+<font size=-2>BePuyo 0.1 : <a href=doc.BePuyo.html>index</a></font>
+<center><b><u><font size=+3>Algorithme de detection des collisions</font></u></b></center><p>
+Cet algorithme est utilise lors du deplacement des Puyo pour qu'ils ne puissent rentrer en collision avec les puyo presents dans le PuyoField.<br>
+Son principe est tres simple : on superpose la matrice puyo a la matrice du PuyoField, si au moins une cellule est remplie sur les deux plans, c'est qu'il y a eu une collision.<p>
+On sait qu'une cellule est remplie sur les deux plans en multipliant leurs valeurs : une case vide a pour valeur 0, on obtient donc les resultats suivant  pour toute cellule de coordonnes [x][y]:<ul>
+<li>si la cellule de la matrice puyo est vide et celle du PuyoField aussi : 0*0=0
+<li>si la cellule de la matrice puyo est vide mais pas celle du PuyoField : 0*b=0
+<li>si la cellule de la matrice puyo est pleine mais pas celle du PuyoField : a*0=0
+<li>si les deux cellules sont pleines : a*b!=0  (car a!=0 et b!=0)
+</ul>
+En additionnant les produits pour toutes les cellules superposees, on obtient un nombre qui si il est positif signifie qu'il y a eu collision.<br>
+Lors du deplacement d'un Puyo, on effectue virtuellement le deplacement, et si il n'y a pas de collision, on l'effectue reelement.<p>
+<table border=0 cellspacing=0 cellpadding=1><tr><td bgcolor=FFE664><table border=0 cellspacing=0 cellpadding=2><tr><td bgcolor=006996>
+<a href=doc.BePuyo.html>retour a l'index de la documentation</a>
+</td></tr></table></td></tr></table>
+</body></html>

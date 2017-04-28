@@ -1,0 +1,40 @@
+<HTML>
+<HEAD><TITLE>Documentation BePuyo : PuyoField</TITLE></HEAD>
+<BODY bgcolor=336698 text=FFFFFF link=00FF00><font size=-2>BePuyo 0.1 : <a href=doc.BePuyo.html>index</a></font>
+<center><b><u><font size=+3>PuyoField</font></u></b></center><p>
+<b><i>PuyoField.h<br>PuyoField.cpp</i></b><p>
+Cette classe represente l'espace de jeu dans lequel les puyo naissent, evoluent et meurent. Elle est le lieu de la jonction entre les fonctions internes du jeu et l'interface utilisateur.<p>
+<h3>Index des methodes</h2><ul>
+<li><font color=FFE664><b>PuyoField()</b></font> c'est le constructeur de la classe. Il initialise la matrice representant l'aire de jeu et met a la valeur <font color=FFE664><i>_BORDER_PUYO_COLOR_</i></font> les puyo des bords lateraux et inferieur (pour eviter plus tard que les puyo sortent de l'aire de jeu)
+<li><font color=FFE664><b>void display()</b></font> l'utilisation de cette methode produit l'affichage du PuyoField. Lors du jeu il est bon de l'appeller apres chaque evenement. Cette methode peut etre implementee independament du reste de la clase car elle ne fait appel qu'a la matrice representant l'aire de jeu.
+<li><font color=FFE664><b>int setPuyo(int x, int y, int color)</b></font> place un <a href=doc.Puyo.html>Puyo</a> sur le PuyoField, aux coordonnes donnees et de la couleur donnee.<br>Renvoie 1 si l'operation a reussi, 0 sinon (case en dehors du PuyoField).
+<li><font color=FFE664><b>int puyoExplosion()</b></font> une fois un <a href=doc.PuyoCouple.html>PuyoCouple</a> tombe, cette methode recherche les groupe contigus de 4 ou plus Puyo et les fait exploser.
+<li><font color=FFE664><b>findGroup(int,int)</b></font> recherche un groupe de Puyo contigus de meme couleur a partir de coordonnees. Cette methode les marque pius retourne leur nombre (appel recursif).
+<li><font color=FFE664><b>explodeAll()</b></font> fait exploser tous les Puyo marques du groupe actif (c.f. algorithme de detection des explosions)
+<li><font color=FFE664><b>fallAll()</b></font> fait chutter tous les Puyo en suspension
+<li><font color=FFE664><b>unmarkAll()</b></font> enleve le marquage de tous les Puyo du PuyoField
+<li><font color=FFE664><b>int getScore()</b></font>returne le score actuel du PuyoField
+<li><font color=FFE664><b>int updateScore()</b></font>recalcule le score du PuyoField en fonction des derni&egrave;res explosions
+</ul>
+<h3>Donnees membres</h3>
+<font color=FFE664><i>Puyo *matrix[_FIELD_WIDTH_][_FIELD_LENGTH_]</i></font> Cette matrice contient tous les <a href=doc.Puyo.html>Puyo</a> qui composent le PuyoField.
+<font color=FFE664><i>int fieldScore</i></font> Contient le score actuel du PuyoField
+<font color=FFE664><i>int puyoInGroup</i></font> Contient le nompbre de Puyo impliqu&eacute;s dans la derni&egrave;re explosion (permet de calculer le score).
+<p>
+<p><br>
+<h3>Constantes d&eacute;finies</h3>
+<font color=FFE664><i>const int _FIELD_HEIGHT_ </i></font> la hauteur du PuyoField, bord inferieur compris<p>
+<font color=FFE664><i>const int _FIELD_WIDTH_</i></font> la largeur du PuyoField, bords compris<p>
+<font color=FFE664><i>const int _PUYO_WIDTH_</i></font> la largeur en pixels d'un <a href=doc.Puyo.html>Puyo</a><p>
+<font color=FFE664><i>const int _PUYO_HEIGHT_</i></font> la hauteur en pixels d'un <a href=doc.Puyo.html>Puyo</a><p>
+<font color=FFE664><i>const int _BORDER_PUYO_COLOR_</i></font> la couleur (entier) des <a href=doc.Puyo.html>Puyo</a> invisibles du bord<p>
+
+<table border=0 cellspacing=0 cellpadding=1><tr><td bgcolor=FFE664><table border=0 cellspacing=0 cellpadding=2><tr><td bgcolor=006996>
+<a href=doc.BePuyo.html>retour a l'index de la documentation</a>
+</td></tr></table></td></tr></table>
+
+
+
+
+
+</BODY></HTML>

@@ -1,0 +1,18 @@
+<HTML>
+<HEAD><TITLE>Documentation BePuyo : PuyoView</TITLE></HEAD>
+<BODY bgcolor=006996 text=FFFFFF link=00FF00>
+<font size=-2>BePuyo 0.1 : <a href=doc.BePuyo.html>index</a></font>
+<center><b><u><font size=+3>PuyoAnimWin</font></u></b></center><p>
+<b><i>PuyoView.h<br>PuyoView.cpp</i></b><p>
+PuyoView h&eacute;rite de BView. et impl&eacute;mente tout ce qui est n&eacute;cessaire pour l'interface graphique et l'interaction avec l'utilisateur. Elle effectue l'essentiel des t&acirc;ches du programme avec des objets du type <a href=doc.PuyoCouple>PuyoCouple</a> et <a href=doc.PuyoField>PuyoField</a> alors que les classes PuyoAnimApp et PuyoAnimWin sont relativement passives. <p>
+<h3>Index des methodes</h2><ul>
+<li><font color=FFE664><b>PuyoView()</b></font> c'est le constructeur de la vue sur un PuyoField. Il construit un PuyoField, ajoute quelques puyo ici ou la et lance un PuyoCouple dedans.
+<li><font color=FFE664><b>KeyDown(const char *bytes, int32 numBytes)</b></font> Cette m&eacute;thode g&egrave;re les entrées au clavier. A chaque fois qu'une touche est utilis&eacute;e, cette méthode est appel&eacute;e et fait le n&eacute;cessaire. Il est possible de construire d'autres m&eacute;thodes du type pour gerer toutes les iteractions avec l'utilisateur.<br>A chaque appel de cette m&eacute;thode, la vue est modifi&eacute;e, ce qui suffit a la PuyoAnimWin pour d&eacute;clencher automatiquement son raffraichissement :)
+<li><font color=FFE664><b>newPuyo()</b></font>rajoute un PuyoCouple de couleurs al&eacute;atoires dans le PuyoField.</b>.
+</ul>
+<h3>Donn&eacute;es membres</h3>
+<font color=FFE664><i>PuyoField *playField</i></font><br>le PlayField du jeu.<p>
+<font color=FFE664><i>PuyoCouple *puyo</i></font><br>le Puyo qui tombe du haut de l'&eacute;cran.
+<p><table border=0 cellspacing=0 cellpadding=1><tr><td bgcolor=FFE664><table border=0 cellspacing=0 cellpadding=2>
+<tr><td bgcolor=006996><a href=doc.BePuyo.html>retour &agrave; l'index de la documentation</a></td></tr></table></td></tr></table>
+</BODY></HTML>

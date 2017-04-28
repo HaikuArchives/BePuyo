@@ -1,0 +1,37 @@
+<HTML>
+<HEAD><TITLE>Documentation BePuyo : PuyoCouple</TITLE></HEAD>
+<BODY bgcolor=336698 text=FFFFFF link=00FF00>
+<font size=-2>BePuyo 0.1 : <a href=doc.BePuyo.html>index</a></font>
+<center><b><u><font size=+3>PuyoCouple</font></u></b></center><p>
+<b><i>PuyoCouple.h<br>PuyoCouple.cpp</i></b><p>
+Cette classe represente les couples de <a href=doc.Puyo?html>Puyo</a> : de petites boules de gelee colorees et mausantes. Les PuyoCouple sont autonomes : ils savent evoluer lateralement, tomber, et tourner.<br>
+Pour chaque PuyoCouple, il existe un master-puyo et un slave-puyo. Lors de la rotation, le slave puyo tourne autour du master puyo.<br>
+Lors de leur chutte, si l'un des deux <a href=doc.Puyo?html>Puyo</a> touche le sol ou atterit sur un autre <a href=doc.Puyo?html>Puyo</a> du <a href=doc.PuyoField.html>PuyoField</a>, il se stabilise, sort du couple et laisse l'autre tomber le plus bas possible.<p>
+<h3>Index des methodes</h3><ul>
+<li><font color=FFE664><b>PuyoCouple(int x, int ca, int cb)</b></FONT> c'est le constructeur de la classe. <i>x</i> represente l'abscisse du master puyo (le slave puyo est a sa droite), <i>ca</i> la couleur du master puyo, <i>cb</i> la couleur du slave puyo.
+Une fois cree le Puyo n'est pas directement inclus dans le PuyoField, il faut explicitement l'y faire apparaitre.
+<li><font color=FFE664><b>showPuyo(PuyoField*) , hidePuyo(PuyoField*)</b></FONT> les PuyoCouple  sont pr&eacute;sents directement sur la matrice Puyo du <a href=doc.PuyoField.html>PuyoField</a>. Avant tout deplacement il faut donc que le Puyo efface de lui meme ses <a href=doc.Puyo.html>Puyo</a> avant de les replacer a l'endroit qui convient.
+<li><font color=FFE664><b>int movePuyo(int dep, PuyoField*)</b></FONT> permet de deplacer lateralement le Puyo (ou couple de Puyo) vers la droite si <i>dep &gt; 0</i> ou vers la gauche si <i>dep &lt; 0</i>. Si dep=0 il ne bouge pas. Le pointeur vers un PuyoField sert a le renseigner sur le PuyoField dans lequel il evolue (le Puyo refusera de lui meme de se deplacer si cela devait entrainer une collision avec un autre Puyo du PlayField (cad l'instance de <a href=doc.PuyoField.html>PuyoField</a> qui repr&eacute;sente l'aire de jeu) ou avec l'un des <a href=doc.Puyo.html>Puyo</a> fantomes qui evitent de sortir du PuyoField).<br>
+Retourne 1 si le deplacement s'est effectue 0 sinon.
+<li><font color=FFE664><b>int fall(PuyoField*)</b></FONT> fait tomber le PuyoCouple (il est bon d'appeller cette methode automatiquement et r&eacute;guli&egrave;rement lors du jeu). Lorsqu'un des deux puyo atterit, il peut se separer pour laisser tomber l'autre encore plus bas (comme le veut la puyo logique).<br>
+Renvoie 1 si la chutte s'est bien effectuee 'avec eventuellement une separation) 0 sinon (il est alors temps d'effectuer la detection des PuyoExplosions et de balancer un nouveau Puyo dans le PuyoField)
+<li><font color=FFE664><b>int rotatePuyo(int alpha, PuyoField*)</b></FONT> fait tourner le slave puyo autour du master puyo par increments de plus ou moins pi/2 radians (en fonction du signe de alpha).<br>
+Comme d'habitude renvoie 1 si la rotation s'est bien passee 0 si elle est impossible
+<li><font color=FFE664><b>int coutPuyo()</b></font> renvoie le nombre de <a href=doc.Puyo.html>Puyo</a> pr&eacute;sents dans le PuyoCouple. Si ce nombre est 0, c'est que le PuyoCouple est compl&egrave;tement tomb&eacute; et qu'il faut lancer la d&eacute;tection des explosions.
+</ul>
+<h3>Structures de donnees</h3><ul>
+<li><i><a href=doc.Puyo.html>Puyo</a><font color=FFE664>  *pMatrix[3][3]</i></font> repr&eacute;sente le PuyoCouple.. Le master puyo est en [1][1], et le slave puyo se ballade entre [2][1], [1][0], [0][1], et [1][2]  (en gros il ne vas pas dans les diagonales).<br>
+Une methode <b>printPuyo()</b> sert au debuggage de cette classe et affiche sommairement la pMatrix.<br>
+Les coordonn&eacute;es sont invers&eacute;es dans l'axe vertical  et les indices commences &agrave; 0:
+<table width=60>
+<tr height=20><td height=20 width=20><center>[0;0]</td><td  width=20><center>[0;1]</td><td width=20><center>[0;2]</td></tr>
+<tr height=20><td height=20 width=20><center>[1;0]</td><td  width=20><center>[1;1]</td><td width=20><center>[1;2]</td></tr>
+<tr height=20><td height=20 width=20><center>[2;0]</td><td  width=20><center>[2;1]</td><td width=20><center>[2;2]</td></tr>
+</table>
+<li><font color=FFE664><i>int x , y</i></font> sont les coordonnes de la case [0][0] de la pMatrix, dans le PuyoField auquel le Puyo est associe (associer a un meme Puyo plusieurs PuyoField ne peut amener que ruine et desolation mais ca vous vous en doutez deja ;) )
+<li><font color=FFE664><i>int puyoCount</i></font> recense le nombre de Puyo present dans le 'couple'. Fixe a 2 a la creation, ce nombre peut baisser lors des chuttes successives du Puyo. Lorsqu'il atteint 0, la methode de chutte renvoie automatiquement que les deux puyo sont tombes et qu'il faut passer au suivant.
+</ul><p>
+<table border=0 cellspacing=0 cellpadding=1><tr><td bgcolor=FFE664><table border=0 cellspacing=0 cellpadding=2>
+<tr><td bgcolor=006996><a href=doc.BePuyo.html>retour a l'index de la documentation</a></td></tr></table></td></tr></table>
+
+</BODY></HTML>

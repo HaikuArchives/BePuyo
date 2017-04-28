@@ -1,0 +1,19 @@
+<HTML>
+<HEAD><TITLE>Documentation BePuyo : PuyoAnimWin</TITLE></HEAD>
+<BODY bgcolor=336698 text=FFFFFF link=00FF00>
+<font size=-2>BePuyo 0.1 : <a href=doc.BePuyo.html>index</a></font>
+<center><b><u><font size=+3>PuyoAnimWin</font></u></b></center><p>
+<b><i>PuyoAnimWin.h<br>PuyoAnimWin.cpp</i></b><p>
+Cette classe h&eacute;rite de BDirectWindow pour effectuer un affichage rapide du jeu. Elle  gere l'affichage de la ou des PuyoView, les boutons et prend en charge la cohabitation avec le reste de l'interface graphique de BeOS.
+<h3>Index des methodes</h2><ul>
+<li><font color=FFE664><b>PuyoAnimWin()</b></font> c'est le constructeur de la fen&ecirc;tre qui effectue l'essentiel des initialisations du programme : il cr&eacute;e la fen&ecirc;tre, ajoute une vue et des boutons. Le contenu r&eacute;el de la fen&ecirc;tre (aire de jeu) est entierement pris en charge par PuyoView.
+<li><font color=FFE664><b>MessageReceived(BMessage *)</b></font> c'est la m&eacute;thode d'interception des messages, qui permet de faire fonctionner l'interface utilisateur (boutons, mais pas utilisation du clavier : PuyoView). 
+<li><font color=FFE664><b>display()</b></font> c'est la m&eacute;thode d'affichage de la fen&ecirc;tre. Il effectue une boucle dans le PlayField pour afficher des blocs d'image issus du <b>fichier de ressources graphiques</b>, pour ensuite les afficher dans la vue. De nombreux tests et calculs de coordonn&eacute;es sont effectu&eacute;s pour d&eacute;terminer ou sont plac&eacute;s les blocs d'images recherch&eacute;s dans le fichier de ressources graphiques. Ces tests et calculs devront &ecirc;tre lus directement par un <b>fichier de description des &eacute;l&eacute;ments graphiques</b>.
+</ul>
+<h3>Donnees membres</h3>
+<font color=FFE664><i>PuyoView *view</i></font><br>C'est la vue dans laquelle sont plac&eacute;s tous les &eacutes;l&eacute;ments graphiques de l'interface et qui g&egrave;re les &eacute;l&eacute;ments de jeu en lui-m&ecirc;me ainsi que l'interaction de jeu avec l'utilisateur.<p>
+<font color=FFE664><i>BBitmap *puyoImage</i></font><br>Bitmap lue &agrave; partir du fichier de ressources graphiques, contenant tous les &eacute;l&eacute;ments graphiques du jeu (sprites, d&eacute;cors, ...)<p>
+<font color=FFE664><i>int compteur</i></font><br>petit compteur qui sert a determiner quand faire tomber les pieces dans la proc&eacute;dure bidouille d'affichage pour que ca ne soit pas trop lent.<p>
+<p><table border=0 cellspacing=0 cellpadding=1><tr><td bgcolor=FFE664><table border=0 cellspacing=0 cellpadding=2>
+<tr><td bgcolor=006996><a href=doc.BePuyo.html>retour a l'index de la documentation</a></td></tr></table></td></tr></table>
+</BODY></HTML>

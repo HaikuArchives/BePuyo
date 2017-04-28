@@ -1,0 +1,36 @@
+<html><head><title>Documentation BePuyo : algorithme de detection des explosions</title></head>
+<BODY bgcolor=336698 text=FFFFFF link=00FF00>
+<font size=-2>BePuyo 0.1 : <a href=doc.BePuyo.html>index</a></font>
+<center><b><u><font size=+3>Algorithme de detection des explosions</font></u></b></center><p>
+Cet algorithme est l'aboutissement de l'algorithme de detections des groupes (qui sert accessoirement a produire un affichage plus sympathique)<ol>
+<li><a href=#selection>Selection d'une cellule</a>
+<li><a href=#groupe>Detection et marquage d'un groupe de puyo contigus de la meme couleur</a>
+<li>si le nombre de puyo du groupe est superieur ou egal a 4<ul>
+	<li><a href=#explosion>explosion du groupe et chutte des restants</a>
+	<li>marquage passif des puyo du groupe (si ils sont encore la)
+	<li>on recommence depuis le debut
+</ul>
+<li>marquer comme visites et non actifs les puyo actifs 
+<li>aller en 1 pour selectionner une nouvelle cellule
+</ol>
+<a name=selection><h3>Selection d'une cellule</h3>
+On regarde toutes les cellules de haut en bas et de gauche a droite. Des qu'une cellule non marquee est trouvee (attribut <b>visited</b> à FALSE), on lance l'algorithme de detection des groupes dessus.<p>
+<a name=groupe><h3>Detection des groupes</h3>
+Cet algorithme recursif a pour but de marquer (attributs <b>visited</b> et <b>activeGroup</b>) tous les puyo adjacents d'une meme couleur, et de renvoyer leur nombre.<ol>
+<li>le groupe a 1 puyo (celui de depart)
+<li>on marque ce puyo comme etant actif et ayant ete visite (en modifiant les attributs de marquage)
+<li>on ajoute le nombre de puyo adjacents de la meme couleur qui a partir du puyo immediatement a droite si celui-ci n'a pas deja ete marque
+<li>on ajoute le nombre de puyo adjacents de la meme couleur qui a partir du puyo immediatement en haut si celui-ci n'a pas deja ete marque
+<li>on ajoute le nombre de puyo adjacents de la meme couleur qui a partir du puyo immediatement a gauche si celui-ci n'a pas deja ete marque
+<li>on ajoute le nombre de puyo adjacents de la meme couleur qui a partir du puyo immediatement en bas si celui-ci n'a pas deja ete marque
+<li>on renvie le nombre de puyo trouves
+</ul>
+<a name=explosion><h3>Explosion et chutte des puyo</h3>
+Si la fonction de recherche des groupes rapporte qu'elle vient de trouver un groupe de taille 4 ou plus, on fait exploser tous les puyo <b>marques actifs</b> (en leur attribuant la couleur 0)<br>
+Apres cela il faut faire retomber tous les puyo qui pourraient se retrouver en suspension, et <b>reprendre l'algorithme depuis le debut</b> pour bien prendre en compte les eventuelles reactions en chaines.<p>
+Cet algorithme a pour avantage d'eviter d'avoir a manier explicitement une structure de groupe ce qui serait tres lourds. Pour reperer les puyo du groupe actif, il suffit de faire un parcours complet du PuyoField et de reperer ceux qui ont l'attribut <b>activeGroup</b> a TRUE .
+<p>
+<table border=0 cellspacing=0 cellpadding=1><tr><td bgcolor=FFE664><table border=0 cellspacing=0 cellpadding=2><tr><td bgcolor=006996>
+<a href=doc.BePuyo.html>retour a l'index de la documentation</a>
+</td></tr></table></td></tr></table>
+</body></html>

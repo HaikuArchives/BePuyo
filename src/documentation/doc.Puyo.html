@@ -1,0 +1,25 @@
+<HTML>
+<HEAD><TITLE>Documentation BePuyo : Puyo</TITLE></HEAD>
+<BODY bgcolor=336698 text=FFFFFF link=00FF00>
+<font size=-2>BePuyo 0.1 : <a href=doc.BePuyo.html>index</a></font>
+<center><b><u><font size=+3>Puyo</font></u></b></center><p>
+<b><i>Puyo.h</i></b><p>
+Cette classe represente les Puyo : de petites boules de gelee colorees et amusantes. <br>
+Un Puyo a plusieurs etats : il peut etre marque, faire partie du groupe actif, ou aucun des deux. Il possede egalement une couleur.<br>
+Les Puyo sont utilises en couple par la classe <a href=doc.PuyoCouple.html>PuyoCouple</a> pour les Puyo mobiles qui tombent, et en quantite par le <a href=doc.PuyoField.html>PuyoField</a> pour creer l'aire de jeu.
+<p>
+<h3>Index des methodes</h3><ul>
+<li><font color=FFE664><b>Puyo(int)</b></FONT> cree un nouveau Puyo vierge de marquage et de la couleur specifiee (la couleur est donnee sous forme d'un entier; la couleur reelle dependra du fichier de ressources graphiques utilise)
+<li><font color=FFE664><b>setColor(int)</b></FONT> modifie la couleur d'un Puyo
+<li><font color=FFE664><b>int color()</b></FONT> renvoie sa couleur
+<li><font color=FFE664><b>mark(), isMarked(), unmark()</b></FONT> methodes de marquage utilisees par <a href=doc.PuyoField.html>PuyoField</a> pour la <a href=doc.algo.explosions.html>detection des explosions</a>.
+<li><font color=FFE664><b>markActive(), isActiveMarked(), unmarkActive()</b></FONT> methodes de marquage utilisees par PuyoField pour la detection des explosions</a>.
+</ul>
+<h3>Donnees membres</h3><ul>
+<li><font color=FFE664><i>int col</i></font> la couleur du Puyo
+<li><font color=FFE664><i>bool visited</i></font> marqueur de visite du Puyo
+<li><font color=FFE664><i>bool activeGroup</i></font> marqueur d'appartenance au <a href=doc.algo.explosions#ga>groupe actif</a>
+</ul><p>
+<table border=0 cellspacing=0 cellpadding=1><tr><td bgcolor=FFE664><table border=0 cellspacing=0 cellpadding=2>
+<tr><td bgcolor=006996><a href=doc.BePuyo.html>retour a l'index de la documentation</a></td></tr></table></td></tr></table>
+</BODY></HTML>
