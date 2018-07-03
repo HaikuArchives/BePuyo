@@ -41,7 +41,9 @@ PuyoCouple::PuyoCouple(int xx, int ca, int cb)
 	pMatrix[2][1]->setColor(cb);
 	x=xx;
 	y=0;
-	puyoCount = 2;
+	puyoCount = 0;
+	if (ca != 0) ++puyoCount;
+	if (cb != 0) ++puyoCount;
 }
 
 
